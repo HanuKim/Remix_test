@@ -9,6 +9,8 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "skipDefaultLibCheck": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -21,6 +23,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    ".next/types/**/*.ts",
+    "src/components/shop/order/Step.jsx",
+    "next.config.cjs"
+  ],
   "exclude": ["node_modules"]
 }
