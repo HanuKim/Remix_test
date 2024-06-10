@@ -7,6 +7,7 @@ import OrderInfoForm from "./form/OrderInfoForm";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import CompleteForm from "./form/CompleteForm";
+import DeliveryForm from "./form/DeliveryForm";
 
 const stepMachine = createMachine(
   {
@@ -94,7 +95,6 @@ const Step = () => {
         return "주문서 작성";
     }
   };
-  console.log(state.value);
 
   const handleNextClick = () => {
     if (state.value === "payment") {
@@ -123,6 +123,7 @@ const Step = () => {
       </div>
 
       {state.value === "order" && <OrderInfoForm />}
+      {state.value === "delivery" && <DeliveryForm />}
       {state.value === "payment" && <PaymentForm />}
       {state.value === "complete" && <CompleteForm />}
 

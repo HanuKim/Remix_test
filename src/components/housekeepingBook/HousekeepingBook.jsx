@@ -20,6 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import dayjs from "dayjs";
 
 const cart = [
   {
@@ -39,24 +40,46 @@ const cart = [
   },
 ];
 
-const OrderInfoForm = () => {
+const HousekeepingBook = () => {
   const calculateTotal = () => {
     return cart.reduce((acc, item) => acc + item.price, 0);
   };
+
+  const period =
+    dayjs().startOf("month").format("YYYY-MM-DD") +
+    " ~ " +
+    dayjs().endOf("month").format("YYYY-MM-DD");
+
   return (
-    <Card className="w-[350px] h-[350px] mt-5 overflow-auto">
+    <Card className="w-[650px] h-[350px] mt-20 mb-20 overflow-auto">
       <CardHeader>
-        <CardTitle>주문서 작성</CardTitle>
-        <CardDescription>
-          개인정보 입력 후 구매하실 상품을 확인해주세요.
-        </CardDescription>
+        <CardTitle>Housekeeping Book</CardTitle>
+        <CardDescription>{period}</CardDescription>
       </CardHeader>
       <CardContent>
         <form>
           <div className="grid w-full items-center gap-2">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">성함</Label>
-              <Input id="name" placeholder="성함을 입력해주세요." />
+            <div className="flex items-end gap-5">
+              <div>
+                <Label htmlFor="budget">예산</Label>
+                <div className="flex items-end gap-1">
+                  <Input
+                    id="budget"
+                    readOnly
+                    className="w-20"
+                    onClick={() => alert("Dd")}
+                  />
+                  <span className="text-sm">원</span>
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="spending">지출</Label>
+                <div className="flex items-end gap-1">
+                  <Input id="spending" readOnly className="w-20" />
+                  <span className="text-sm">원</span>
+                </div>
+              </div>
             </div>
             <div className="flex flex-col space-y-1.5">
               <div className="flex w-full max-w-sm items-center space-x-2">
@@ -100,4 +123,4 @@ const OrderInfoForm = () => {
   );
 };
 
-export default OrderInfoForm;
+export default HousekeepingBook;

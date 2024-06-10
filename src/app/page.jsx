@@ -32,6 +32,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import Step from "@/components/shop/order/Step";
 import { Toaster } from "@/components/ui/toaster";
+import TimeWatch from "@/components/ui/TimeWatch";
+import HousekeepingBook from "@/components/housekeepingBook/HousekeepingBook";
 
 export default function Home() {
   const [num, setNum] = React.useState(0);
@@ -99,6 +101,9 @@ export default function Home() {
 
       <Step />
       <Toaster />
+
+      <TimeWatch />
+      <HousekeepingBook />
     </main>
   );
 }
