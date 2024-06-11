@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 
+interface User {
+  id: string;
+  name: string;
+}
+
 export default function Reserve() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [userId, setUserId] = useState("");
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
       const res = await fetch("/api/users");
       if (res.ok) {
-        const data = await res.json();
+        const data: User[] = await res.json();
         setUsers(data);
       } else {
         console.error("Failed to fetch users");

@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
-
+import withPWAInit from "@ducanh2912/next-pwa";
 // next.config.js
+
+const withPWA = withPWAInit({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  extendDefaultRuntimeCaching: true,
+});
 
 const nextConfig = {
   reactStrictMode: true,
@@ -15,6 +22,7 @@ const nextConfig = {
   images: {
     domains: ["source.unsplash.com", "/public/images/"],
   },
+  swcMinify: true,
 };
 
-module.exports = nextConfig;
+module.exports = withPWA(nextConfig);
